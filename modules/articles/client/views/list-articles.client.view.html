@@ -1,0 +1,39 @@
+<div id="content" ng-controller="ArticlesController" data-ng-init="find()">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>Articles</h1>
+    <ol class="breadcrumb">
+      <li><a href="/articles/create" class="btn btn-success">Create New</a></li>
+    </ol>
+  </section>
+  <div class="clear">&nbsp;</div>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-success" ng-if="articles.$resolved && articles.length">
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+              <tbody><tr>
+                <th>Name</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+              </tr>
+              <tr data-ng-repeat="article in articles">
+                <td>{{article.name}}</td>
+                <td><a href="/articles/{{article._id}}/edit" class="btn btn-primary">Edit</a></td>
+                <td><button ng-click="openModal(article,$index)" class="btn btn-danger">Delete</button></td>
+              </tr>
+              </tbody></table>
+          </div>
+          
+          <!-- /.box-body -->
+        </div>
+        <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
+            No Articles yet, why don't you <a ui-sref="articles.create">create one</a>?
+          </div>
+        <!-- /.box -->
+      </div>
+    </div>
+  </section>
+</div>

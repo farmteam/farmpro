@@ -1,0 +1,24 @@
+<div id="content" ng-controller="ArticlesController" data-ng-init="find()">
+<section>
+  <div class="content-header">
+    <h1>Farms</h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="farm in vm.farms"
+       data-ui-sref="farms.view({ farmId: farm._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span data-ng-bind="farm.created | date:'mediumDate'"></span>
+        by
+        <span data-ng-if="farm.user" data-ng-bind="farm.user.displayName"></span>
+        <span data-ng-if="!farm.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" data-ng-bind="farm.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-if="vm.farms.$resolved && !vm.farms.length">
+    No Farms yet, why don't you <a data-ui-sref="farms.create">create one</a>?
+  </div>
+</section>
+</div>

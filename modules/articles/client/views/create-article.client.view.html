@@ -1,0 +1,42 @@
+<div id="content" ng-controller="ArticlesController">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>New Article</h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <!-- Default box -->
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">Create New</h3>
+      </div>
+      <form data-ng-submit="create()" novalidate>
+        <div data-ng-show="error" class="box-body">
+          <div class="alert alert-danger alert-dismissible">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            <h4><i class="icon fa fa-ban"></i> Error</h4>
+            <strong data-ng-bind="error"></strong>
+          </div>
+        </div>
+        <div class="box-body">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" data-ng-model="name" class="form-control"
+                   placeholder="Name">
+          </div>
+        </div>
+        <div class="box-footer">
+          <input type="submit" class="btn btn-success" value="Submit" />
+        </div>
+        <!-- /.box-footer-->
+      </form>
+
+
+    </div>
+    <!-- /.box -->
+
+  </section>
+  <!-- /.content -->
+</div>

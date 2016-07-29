@@ -1,0 +1,59 @@
+<ul class="sidebar-menu"  ng-controller="NavController">
+    <li class="header">Trang trại của tôi</li>
+
+    <li  ui-sref-active="active">
+        <a ui-sref="home">
+            <i class="glyphicon glyphicon-info-sign" ></i> <span>{{state.current.name}} Hồ sơ</span> <i class="fa fa-angle-right pull-right"></i>
+        </a>
+    </li>
+
+    <li  ui-sref-active="active">
+        <a ui-sref="home">
+            <i class="glyphicon glyphicon-apple" ></i> <span>{{state.current.name}} Mùa vụ</span> <i class="fa fa-angle-right pull-right"></i>
+        </a>
+    </li>
+    
+    <li  ui-sref-active="active">
+        <a ui-sref="home">
+            <i class="fa fa-shopping-cart" ></i> <span>{{state.current.name}} Cửa hàng</span> <i class="fa fa-angle-right pull-right"></i>
+        </a>
+    </li>    
+    
+    <!-- ------------------- A D M I N ------------------- -->
+    <li ui-sref-active="active" ng-repeat="item in menu.items | orderBy: 'position'"
+        ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" class="{{item.class}} treeview">
+        
+        <a href="" ng-if="item.type === 'dropdown'" ng-click="toggleTreeClass($index)">
+            <span>{{::item.title}}</span>
+            <i class="fa fa-angle-right pull-right"></i>
+        </a>
+        
+        <a ng-if="item.type === 'item'"ui-sref="{{item.state}}">{{item.title}}<i class="fa fa-angle-right pull-right"></i></a>
+        
+        <ul class="treeview-menu" ng-class="isTreeOpened[$index]">
+            <li ng-repeat="subitem in item.items | orderBy: 'position'"
+                ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
+                <a ui-sref="{{subitem.state}}" ng-bind="subitem.title"></a>
+            </li>
+        </ul>        
+    </li>
+    <!-- A D M I N -->
+   
+    <li class="treeview"  ui-sref-active="active" style="display:none;">
+        <a ui-sref="settings">
+            <i class="fa fa-heart"></i>
+            <span>Quản trị hệ thống</span>
+            <i class="fa fa-angle-right pull-right"></i>
+        </a>
+        
+        <ul class="treeview-menu">
+            <!--<li ui-sref-active="active"><a ui-sref="settings.profile"><i class="fa fa-circle-o"></i> Update Profile</a></li>-->
+            <!--<li ui-sref-active="active"><a ui-sref="settings.accounts"><i class="fa fa-circle-o"></i> Manage Social Accounts</a></li>-->
+            <!--<li ui-sref-active="active"><a ui-sref="settings.password"><i class="fa fa-circle-o"></i> Change Password</a></li>-->
+            <li ui-sref-active="active"><a ui-sref="settings.profile"><i class="fa fa-home"></i>Trang trại</a>
+            <li ui-sref-active="active"><a ui-sref="#"><i class="fa fa-user"></i>Người dùng</a>
+            <li ui-sref-active="active"><a ui-sref="#"><i class="fa fa-tags"></i>Sản phẩm</a>
+        </ul>
+    </li>
+    
+</ul>

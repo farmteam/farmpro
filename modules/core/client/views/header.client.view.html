@@ -1,0 +1,63 @@
+<div class="main-header" ng-controller="HeaderController">
+  <!-- Logo -->
+  <a ui-sref="home" class="logo">
+    <img src="/modules/core/client/img/brand/logo.png" width="150" />
+  </a>
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
+    <a class="sidebar-toggle" data-toggle="offcanvas" role="button" ng-click="toggleSidebar()">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li class="dropdown user-menu" uib-dropdown>
+          <a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button">
+            <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
+            <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <!-- User image -->
+            <li class="user-header">
+              <img alt="User Image" class="img-circle" src="{{authentication.user.profileImageURL}}">
+              <p>
+                {{authentication.user.firstName}} {{authentication.user.lastName}}
+                <small>Member since {{authentication.user.created | date:shortDate}}</small>
+              </p>
+
+            </li>
+            <!-- Menu Body -->
+            <li class="user-body">
+              <div class="row">
+                <div class="col-xs-6 text-center">
+                  <a class="btn btn-default btn-flat" ui-sref="settings.password">Đổi mật khẩu</a>
+                </div>
+                <!--<div class="col-xs-4 text-center">-->
+                  <!--<a class="btn btn-default btn-flat" ui-sref="settings.picture">Avatar</a>-->
+                <!--</div>-->
+                <!--
+                <div class="col-xs-6 text-center">
+                  <a class="btn btn-default btn-flat" ui-sref="settings.accounts">Social Accounts</a>
+                </div> -->
+              </div>
+              <!-- /.row -->
+            </li>
+            <!-- Menu Footer-->
+            <li class="user-footer">
+              <div class="pull-left">
+                <a class="btn btn-default btn-flat" ui-sref="settings.profile">Sửa hồ sơ</a>
+              </div>
+              <div class="pull-right">
+                <a class="btn btn-default btn-flat" href="/api/auth/signout" target="_self">Đăng xuất</a>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,5 @@
+<div class="alert alert-{{message.type}} alert-dismissable" ng-show="message">
+    <button aria-hidden="true" data-dismiss="alert" ng-click="close()" class="close" type="button">×</button>
+    <h4><i class="icon fa fa-{{getIcon(message.type)}}"></i>{{message.title}}</h4>
+   {{message.message}}
+</div>

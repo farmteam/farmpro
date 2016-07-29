@@ -1,0 +1,13 @@
+html,
+body {
+    height: 100%;
+    background-color: #ecf0f5;
+}
+
+.content-wrapper{
+
+}
+
+.sidebar-menu .treeview-menu {
+    display: block;
+}

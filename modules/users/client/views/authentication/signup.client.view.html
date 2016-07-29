@@ -1,0 +1,87 @@
+<div class="register-box">
+  <div class="register-logo">
+    <a href="/"><img src="/modules/core/client/img/brand/logo.png" width="250" /> </a>
+  </div>
+
+  <div class="register-box-body" ng-controller="AuthenticationController">
+    <p class="login-box-msg">Đăng kí thành viên mới</p>
+    <alert type="danger" ng-show="error" class="text-center text-danger">
+      <span ng-bind="error"></span>
+    </alert>
+
+    <form name="userForm" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
+      <fieldset>
+        <div class="form-group has-feedback" show-errors>
+          <label for="firstName">Đệm và Tên</label>
+          <input type="text" id="firstName" name="firstName" class="form-control" ng-model="credentials.firstName" placeholder="Đệm và tên" required>
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          <div ng-messages="userForm.firstName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Bắt buộc phải nhập Đệm và tên</p>
+          </div>
+        </div>
+        <div class="form-group has-feedback" show-errors>
+          <label for="lastName">Họ</label>
+          <input type="text" id="lastName" name="lastName" class="form-control" ng-model="credentials.lastName" placeholder="Họ" required>
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          <div ng-messages="userForm.lastName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Bắt buộc phải nhập Họ</p>
+          </div>
+        </div>
+        <div class="form-group has-feedback" show-errors>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" ng-model="credentials.email" placeholder="Email" lowercase required>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          <div ng-messages="userForm.email.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Bắt buộc phải nhập Email</p>
+            <p class="help-block error-text" ng-message="email">Email không hợp lệ</p>
+          </div>
+        </div>
+        <div class="form-group has-feedback" show-errors>
+          <label for="username">Tên đăng nhập</label>
+          <input type="text" id="username" name="username" class="form-control" ng-model="credentials.username" placeholder="Tên đăng nhập" lowercase required>
+          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+          <div ng-messages="userForm.username.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Bắt buộc phải nhập Tên đăng nhập</p>
+          </div>
+        </div>
+        <div class="form-group has-feedback" show-errors>
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Mật khẩu" popover="{{popoverMsg}}" popover-trigger="focus" password-validator required>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          <div ng-messages="userForm.password.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Bắt buộc phải nhập mật khẩu</p>
+            <div ng-repeat="passwordError in passwordErrors">
+              <p class="help-block error-text" ng-show="userForm.password.$error.requirements">{{passwordError}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-show="!userForm.password.$error.required">
+          <label>Yêu cầu nhập password</label>
+          <progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></progressbar>
+        </div>
+        <div class="row">
+          <!--
+          <div class="col-xs-8">
+            <a href="/signin" class="text-center">I already have a membership</a>
+          </div><!-- /.col -->
+   
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng kí</button>
+          </div><!-- /.col -->
+        </div>
+
+      </fieldset>
+    </form>
+<!--
+    <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a href="#" ng-click="callOauthProvider('/api/auth/facebook')" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using Facebook</a>
+      <a href="#" ng-click="callOauthProvider('/api/auth/google')" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using Google+</a>
+      <a href="#" ng-click="callOauthProvider('/api/auth/twitter')" class="btn btn-block btn-social btn-twitter btn-flat"><i class="fa fa-twitter"></i> Sign up using Twitter</a>
+      <a href="#" ng-click="callOauthProvider('/api/auth/linkedin')" class="btn btn-block btn-social btn-linkedin btn-flat"><i class="fa fa-linkedin"></i> Sign up using LinkedIn</a>
+      <a href="#" ng-click="callOauthProvider('/api/auth/github')" class="btn btn-block btn-social btn-github btn-flat"><i class="fa fa-github"></i> Sign up using Github</a>
+      <a href="#" ng-click="callOauthProvider('/api/auth/paypal')" class="btn btn-block btn-social btn-bitbucket btn-flat"><i class="fa fa-cc-paypal"></i> Sign up using Paypal</a>
+    </div>
+-->
+  </div><!-- /.form-box -->
+</div><!-- /.register-box -->
